@@ -1,0 +1,170 @@
+datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
+}
+
+enum UserRole {
+    ADMIN
+    USER
+}
+
+enum OrderStatus {
+    FULLFILLED
+    SHIPPED
+    AWAITING_SHIPMENT
+}
+
+model User {
+    id            String    @id @default(cuid())
+    name          String?
+    email         String    @unique
+    emailVerified DateTime?
+    password      String?
+    image         String?
+    role          UserRole  @default(USER)
+    accounts      Account[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Order     Order[]
+}
+
+model Account {
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String?
+    access_token      String?
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String?
+    session_state     String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@id([provider, providerAccountId])
+}
+
+model VerificationToken {
+    email   String
+    token   String
+    expires DateTime
+
+    @@id([email, token])
+}
+
+model PhoneColor {
+    id                 String               @id @default(cuid())
+    name               String
+    hex                String
+    phoneModels        PhoneModel[]
+    phoneConfiguration PhoneConfiguration[]
+}
+
+model PhoneMaterial {
+    id                 String               @id @default(cuid())
+    name               String
+    price              Int
+    description        String?
+    phoneModels        PhoneModel[]
+    phoneConfiguration PhoneConfiguration[]
+}
+
+model PhoneFinishes {
+    id                 String               @id @default(cuid())
+    name               String
+    price              Int
+    description        String?
+    phoneModels        PhoneModel[]
+    phoneConfiguration PhoneConfiguration[]
+}
+
+model PhoneModel {
+    id                 String               @id @default(cuid())
+    name               String
+    url                String
+    price              Int
+    phoneColors        PhoneColor[]
+    phoneMaterials     PhoneMaterial[]
+    phoneFinishes      PhoneFinishes[]
+    phoneConfiguration PhoneConfiguration[]
+}
+
+model ImageConfiguration {
+    id                 String               @id @default(cuid())
+    width              Int
+    height             Int
+    url                String
+    croppedImageUrl    String?
+    phoneConfiguration PhoneConfiguration[]
+}
+
+model PhoneConfiguration {
+    id String @id @default(cuid())
+
+    imageConfigurationId String
+    phoneModelId         String
+    phoneMaterialId      String
+    phoneFinishId        String
+    phoneColorId         String
+    order                Order?
+
+    imageConfiguration ImageConfiguration @relation(fields: [imageConfigurationId], references: [id])
+    phoneModel         PhoneModel         @relation(fields: [phoneModelId], references: [id])
+    phoneMaterial      PhoneMaterial      @relation(fields: [phoneMaterialId], references: [id])
+    phoneFinish        PhoneFinishes      @relation(fields: [phoneFinishId], references: [id])
+    phoneColor         PhoneColor         @relation(fields: [phoneColorId], references: [id])
+}
+
+model Order {
+    id                   String      @id @default(cuid())
+    userId               String
+    phoneConfigurationId String      @unique
+    shippingAddressId    String?
+    billingAddressId     String?
+    amount               Int
+    isPaid               Boolean     @default(false)
+    status               OrderStatus @default(AWAITING_SHIPMENT)
+    createdAt            DateTime    @default(now())
+    updatedAt            DateTime    @updatedAt
+
+    user               User               @relation(fields: [userId], references: [id])
+    phoneConfiguration PhoneConfiguration @relation(fields: [phoneConfigurationId], references: [id])
+    shippingAddress    ShippingAddress?   @relation(fields: [shippingAddressId], references: [id])
+    billingAddress     BillingAddress?    @relation(fields: [billingAddressId], references: [id])
+}
+
+model ShippingAddress {
+    id          String  @id @default(cuid())
+    name        String
+    street      String
+    city        String
+    postalCode  String
+    country     String
+    state       String?
+    phoneNumber String?
+    orders      Order[]
+}
+
+model BillingAddress {
+    id          String  @id @default(cuid())
+    name        String
+    street      String
+    city        String
+    postalCode  String
+    country     String
+    state       String?
+    phoneNumber String?
+    orders      Order[]
+}
