@@ -7,6 +7,5 @@ export async function getPhoneConfiguration() {
     include: { phoneColors: true, phoneMaterials: true, phoneFinishes: true },
   });
 
-  console.log("Phone models", phoneModels);
   return phoneModels;
 }

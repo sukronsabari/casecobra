@@ -51,7 +51,6 @@ export function LoginForm() {
             variant: "destructive",
           });
         } else if (res && res.success) {
-          console.log("LOGGED IN");
           session.update().then(() => {
             router.push(res?.data?.callbackUrl || "/");
           });
