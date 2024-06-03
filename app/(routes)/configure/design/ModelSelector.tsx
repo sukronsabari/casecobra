@@ -43,7 +43,6 @@ export function ModelSelector({
 }: ModelSelectorProps) {
   const [open, setOpen] = useState(false);
 
-  console.log(phoneModels);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

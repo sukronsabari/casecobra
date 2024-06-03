@@ -33,7 +33,7 @@ export function constructMetadata({
       creator: "@sukronsabari",
     },
     icons,
-    // metadataBase: new URL("/"),
+    metadataBase: new URL("https://casecobra.sukronsabari.cloud"),
   };
 }
 

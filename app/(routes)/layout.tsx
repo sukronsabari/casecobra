@@ -1,8 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { auth } from "@/auth";
 
 export default async function Layout({
   children,
@@ -11,7 +10,9 @@ export default async function Layout({
 }) {
   return (
     <>
-      <Navbar />
+      <Suspense>
+        <Navbar />
+      </Suspense>
       <>{children}</>
       <Footer />
     </>
