@@ -25,13 +25,17 @@ jobs:
         run: npm run build
 
       - name: Archive production artifacts
-        run: tar -czf casecobra-app.tar.gz .next package.json next.config.mjs prisma
+        run: |
+          mkdir deploy
+          cp -r .next package.json next.config.mjs prisma deploy/
+          cd deploy
+          tar -czf casecobra-app.tar.gz .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: casecobra-app
-          path: casecobra-app.tar.gz
+          path: deploy/casecobra-app.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +46,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: casecobra-app
-          path: casecobra-app.tar.gz
+          path: deploy
 
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
@@ -54,9 +58,10 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_PRIVATE_VPS1 }}
         run: |
           echo "$SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
-          scp -o StrictHostKeyChecking=no -r casecobra-app.tar.gz sukronsabari@203.194.113.171:/home/sukronsabari
+          scp -o StrictHostKeyChecking=no -r deploy/casecobra-app.tar.gz sukronsabari@203.194.113.171:/home/sukronsabari
           ssh -o StrictHostKeyChecking=no sukronsabari@203.194.113.171 << 'EOF'
             cd /home/sukronsabari
+            mkdir -p casecobra
             tar -xzf casecobra-app.tar.gz -C /home/sukronsabari/casecobra
             cd /home/sukronsabari/casecobra
             npm install --production
