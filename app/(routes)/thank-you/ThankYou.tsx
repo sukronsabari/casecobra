@@ -84,53 +84,55 @@ export function ThankYou() {
           </div>
         </div>
 
-        <div className="my-4">
-          <Phone
-            imgSrc={phoneConfiguration.imageConfiguration.croppedImageUrl!}
-            style={{ backgroundColor: phoneConfiguration.phoneColor.hex }}
-            className="w-60"
-          />
-        </div>
-
-        <div>
-          <div className="grid grid-cols-2 gap-x-6 py-10 text-sm">
-            <div>
-              <p className="font-medium text-gray-900">Shipping address</p>
-              <div className="mt-2 text-zinc-700">
-                <address className="not-italic">
-                  <span className="block">{shippingAddress?.name}</span>
-                  <span className="block">{shippingAddress?.street}</span>
-                  <span className="block">
-                    {shippingAddress?.postalCode} {shippingAddress?.city}
-                  </span>
-                </address>
-              </div>
-            </div>
-            <div>
-              <p className="font-medium text-gray-900">Billing address</p>
-              <div className="mt-2 text-zinc-700">
-                <address className="not-italic">
-                  <span className="block">{billingAddress?.name}</span>
-                  <span className="block">{billingAddress?.street}</span>
-                  <span className="block">
-                    {billingAddress?.postalCode} {billingAddress?.city}
-                  </span>
-                </address>
-              </div>
-            </div>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-8">
+          <div>
+            <Phone
+              imgSrc={phoneConfiguration.imageConfiguration.croppedImageUrl!}
+              style={{ backgroundColor: phoneConfiguration.phoneColor.hex }}
+              className="w-60"
+            />
           </div>
 
-          <div className="grid grid-cols-2 gap-x-6 border-t border-zinc-200 py-10 text-sm">
-            <div>
-              <p className="font-medium text-zinc-900">Payment status</p>
-              <p className="mt-2 text-zinc-700">Paid</p>
+          <div>
+            <div className="grid grid-cols-2 gap-x-6 py-10 text-sm">
+              <div>
+                <p className="font-medium text-gray-900">Shipping address</p>
+                <div className="mt-2 text-zinc-700">
+                  <address className="not-italic">
+                    <span className="block">{shippingAddress?.name}</span>
+                    <span className="block">{shippingAddress?.street}</span>
+                    <span className="block">
+                      {shippingAddress?.postalCode} {shippingAddress?.city}
+                    </span>
+                  </address>
+                </div>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Billing address</p>
+                <div className="mt-2 text-zinc-700">
+                  <address className="not-italic">
+                    <span className="block">{billingAddress?.name}</span>
+                    <span className="block">{billingAddress?.street}</span>
+                    <span className="block">
+                      {billingAddress?.postalCode} {billingAddress?.city}
+                    </span>
+                  </address>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <p className="font-medium text-zinc-900">Shipping Method</p>
-              <p className="mt-2 text-zinc-700">
-                DHL, takes up to 3 working days
-              </p>
+            <div className="grid grid-cols-2 gap-x-6 border-t border-zinc-200 py-10 text-sm">
+              <div>
+                <p className="font-medium text-zinc-900">Payment status</p>
+                <p className="mt-2 text-zinc-700">Paid</p>
+              </div>
+
+              <div>
+                <p className="font-medium text-zinc-900">Shipping Method</p>
+                <p className="mt-2 text-zinc-700">
+                  DHL, takes up to 3 working days
+                </p>
+              </div>
             </div>
           </div>
         </div>
