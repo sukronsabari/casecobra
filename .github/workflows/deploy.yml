@@ -63,7 +63,7 @@ jobs:
             cd /home/sukronsabari
             mkdir -p casecobra
             tar -xzf casecobra-app.tar.gz -C /casecobra
-            /casecobra
+            cd /casecobra
             npm install --production
             pm2 restart casecobra || pm2 start npm --name "casecobra" -- start
           EOF
