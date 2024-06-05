@@ -84,14 +84,12 @@ export function ThankYou() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center overflow-hidden mt-4 rounded-xl bg-gray-900/5 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl">
-          <div>
-            <Phone
-              imgSrc={phoneConfiguration.imageConfiguration.croppedImageUrl!}
-              style={{ backgroundColor: phoneConfiguration.phoneColor.hex }}
-              className="w-60"
-            />
-          </div>
+        <div className="my-4">
+          <Phone
+            imgSrc={phoneConfiguration.imageConfiguration.croppedImageUrl!}
+            style={{ backgroundColor: phoneConfiguration.phoneColor.hex }}
+            className="w-60"
+          />
         </div>
 
         <div>
