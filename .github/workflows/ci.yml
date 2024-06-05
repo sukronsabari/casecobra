@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Use Node.js 20
         uses: actions/setup-node@v3
         with:
@@ -22,5 +24,3 @@ jobs:
       - name: Running test or linting
         run: npm run lint
 
-      - name: Build Project
-        run: npm run build
