@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { PhonePreview } from "@/components/PhonePreview";
 import { formatPrice } from "@/lib/utils";
+import { Phone } from "@/components/Phone";
 
 export function ThankYou() {
   const searchParams = useSearchParams();
@@ -84,10 +85,13 @@ export function ThankYou() {
         </div>
 
         <div className="flex space-x-6 overflow-hidden mt-4 rounded-xl bg-gray-900/5 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl">
-          <PhonePreview
-            url={phoneConfiguration.imageConfiguration.croppedImageUrl!}
-            color={phoneConfiguration.phoneColor.hex}
-          />
+          <div>
+            <Phone
+              imgSrc={phoneConfiguration.imageConfiguration.croppedImageUrl!}
+              style={{ backgroundColor: phoneConfiguration.phoneColor.hex }}
+              className="w-60"
+            />
+          </div>
         </div>
 
         <div>

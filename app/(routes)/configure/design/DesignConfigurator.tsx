@@ -196,12 +196,12 @@ export function DesignConfigurator({
           <AspectRatio
             ref={phoneCaseRef}
             ratio={896 / 1831}
-            className="pointer-events-none relative z-50 aspect-[896/1831] w-full"
+            className="pointer-events-none relative z-[49] aspect-[896/1831] w-full"
           >
             <NextImage
               src="/images/phone-template.png"
               alt="phone image"
-              className="pointer-events-none z-50 select-none"
+              className="pointer-events-none z-[49] select-none"
               fill
             />
           </AspectRatio>

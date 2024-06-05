@@ -25,7 +25,7 @@ export function Navbar() {
   }, [callbackUrl, user]);
 
   return (
-    <nav className="sticky z-[49] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
+    <nav className="sticky z-[99999] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <SectionWrapper>
         <div className="h-full flex items-center justify-between">
           <Link href="/" className="font-semibold">
