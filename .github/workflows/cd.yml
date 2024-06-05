@@ -23,8 +23,8 @@ jobs:
           cd ~/apps/casecobra
           git pull origin main
           git status
-          pwd
-          export PATH=$PATH:/usr/local/bin
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
           npm install
           node --max-old-space-size=2048 node_modules/.bin/next build
           pm2 restart casecobra
