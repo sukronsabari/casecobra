@@ -24,6 +24,7 @@ jobs:
           git pull origin main
           git status
           pwd
+          export PATH=$PATH:/usr/local/bin
           npm install
           node --max-old-space-size=2048 node_modules/.bin/next build
           pm2 restart casecobra
