@@ -62,8 +62,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no sukronsabari@203.194.113.171 << 'EOF'
             cd /home/sukronsabari
             mkdir -p casecobra
-            tar -xzf casecobra-app.tar.gz -C /home/sukronsabari/casecobra
-            cd /home/sukronsabari/casecobra
+            tar -xzf casecobra-app.tar.gz -C /casecobra
+            /casecobra
             npm install --production
             pm2 restart casecobra || pm2 start npm --name "casecobra" -- start
           EOF
