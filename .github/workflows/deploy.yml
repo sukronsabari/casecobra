@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Archive production artifacts
-        run: tar -czf casecobra-app.tar.gz .next package.json next.config.js prisma
+        run: tar -czf casecobra-app.tar.gz .next package.json next.config.mjs prisma
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
