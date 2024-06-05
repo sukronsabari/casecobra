@@ -49,6 +49,7 @@ export function ThankYou() {
   }
 
   const { phoneConfiguration, billingAddress, shippingAddress, amount } = data!;
+  console.log("DEBUG", data);
 
   return (
     <div className="bg-white min-h-screen">
