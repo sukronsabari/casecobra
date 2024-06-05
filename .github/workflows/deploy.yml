@@ -54,7 +54,7 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_PRIVATE_VPS1 }}
         run: |
           echo "$SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
-          scp -o StrictHostKeyChecking=no casecobra-app.tar.gz sukronsabari@203.194.113.171:/home/sukronsabari
+          scp -o StrictHostKeyChecking=no casecobra-app.tar.gz -r sukronsabari@203.194.113.171:/home/sukronsabari
           ssh -o StrictHostKeyChecking=no sukronsabari@203.194.113.171 << 'EOF'
             cd /home/sukronsabari
             tar -xzf casecobra-app.tar.gz -C /home/sukronsabari/casecobra
