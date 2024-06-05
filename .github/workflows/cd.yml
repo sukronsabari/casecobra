@@ -23,6 +23,7 @@ jobs:
           cd ~/apps/casecobra
           git pull origin main
           git status
+          pwd
           npm install
           npm run build
           pm2 restart casecobra
