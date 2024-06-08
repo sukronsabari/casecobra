@@ -29,7 +29,11 @@ export default async function Dashboard() {
     orderBy: {
       createdAt: "desc",
     },
-    include: { user: true, shippingAddress: true },
+    include: {
+      user: true,
+      shippingAddress: true,
+      phoneConfiguration: { include: { imageConfiguration: true } },
+    },
   });
 
   const lastWeekSum = await prisma.order.aggregate({
