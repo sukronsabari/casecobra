@@ -25,12 +25,12 @@ export function Navbar() {
   }, [callbackUrl, user]);
 
   return (
-    <nav className="sticky z-[49] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
+    <nav className="sticky z-[99999] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <SectionWrapper>
         <div className="h-full flex items-center justify-between">
           <Link href="/" className="font-semibold">
+            <span className="text-teal-600">Owl</span>
             case
-            <span className="text-primary">cobra</span>
           </Link>
 
           <div className="flex items-center space-x-4">
@@ -72,7 +72,7 @@ export function Navbar() {
             <Button
               variant="default"
               size="sm"
-              className="hidden sm:inline-flex text-white"
+              className="hidden sm:inline-flex text-white bg-teal-600 hover:bg-teal-600/90"
               asChild
             >
               <Link href="/configure/upload" className="flex">

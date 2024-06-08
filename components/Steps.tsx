@@ -35,7 +35,7 @@ export function Steps() {
             const isCompleted = STEPS.slice(index + 1).some((step) =>
               pathname.endsWith(step.url)
             );
-            const imgPath = `/images/snake-${index + 1}.png`;
+            const imgPath = `/images/owl/owl-${index + 1}.svg`;
 
             return (
               <li
@@ -47,7 +47,7 @@ export function Steps() {
                     "absolute top-0 left-0 w-1 h-full bg-gray-200 lg:top-auto lg:bottom-0 lg:w-full lg:h-1",
                     {
                       "bg-gray-500": isCurrent,
-                      "bg-primary": isCompleted,
+                      "bg-teal-600": isCompleted,
                     }
                   )}
                   aria-hidden

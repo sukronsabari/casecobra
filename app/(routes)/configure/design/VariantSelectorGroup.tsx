@@ -27,7 +27,7 @@ export function VariantSelectorGroup({
               <div
                 className={cn(
                   "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-gray-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
-                  { "border-primary": checked }
+                  { "border-teal-600": checked }
                 )}
               >
                 <div className="flex items-center">
