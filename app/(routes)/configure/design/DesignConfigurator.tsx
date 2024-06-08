@@ -342,7 +342,7 @@ export function DesignConfigurator({
               </p>
               <Button
                 size="sm"
-                className="w-full"
+                className="w-full bg-teal-600 hover:bg-teal-600/90"
                 onClick={() => mutate()}
                 disabled={isPending}
               >

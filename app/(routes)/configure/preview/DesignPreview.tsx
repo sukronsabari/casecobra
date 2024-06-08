@@ -128,7 +128,7 @@ export function DesignPreview({ phoneConfiguration }: DesignPreviewProps) {
           </h3>
 
           <div className="mt-3 flex items-center gap-1 5 text-base">
-            <Check className="w-4 h-4 text-green-500" />
+            <Check className="w-4 h-4 text-teal-600" />
             In stock and ready to ship
           </div>
 
@@ -195,7 +195,7 @@ export function DesignPreview({ phoneConfiguration }: DesignPreviewProps) {
             <div className="mt-8 flex justify-end pb-12">
               <Button
                 onClick={handleCheckout}
-                className="px-4 m:px-6 lg:px-8 min-w-[120px]"
+                className="px-4 bg-teal-600 hover:bg-teal-600/90 m:px-6 lg:px-8 min-w-[120px]"
                 disabled={isPending}
               >
                 {isPending ? (
